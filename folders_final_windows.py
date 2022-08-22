@@ -15,9 +15,7 @@ tkinter.messagebox.showinfo(
 )
 
 # Shows dialog box and return the path
-path = askdirectory(
-    initialdir="/Volumes/Cadastra/CANTINI/Clientes/Angeloni", title="Pasta destino"
-)
+path = askdirectory(initialdir="~Desktop/Angeloni", title="Pasta destino")
 print(path)
 
 # Creates the folder
@@ -31,9 +29,10 @@ userStr = simpledialog.askstring(
 )
 
 # Cleans the folder name
-cleanStr1 = userStr.replace(":", " |")
+cleanStr1 = userStr.replace(":", "-")
 cleanStr2 = cleanStr1.replace("/", "-")
-NewFolder = cleanStr2
+cleanStr3 = cleanStr2.replace(".", "-")
+NewFolder = cleanStr3
 
 # Tests if the folder a ready exists
 try:
