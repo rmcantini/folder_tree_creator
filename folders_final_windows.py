@@ -11,7 +11,7 @@ root.withdraw()
 
 # Intro guide messagebox
 tkinter.messagebox.showinfo(
-    "info", "Selecione onde será salva a task, \n(Super ou Eletro)."
+    "info", "Selecione onde será salva a task."
 )
 
 # Shows dialog box and return the path
