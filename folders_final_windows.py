@@ -29,7 +29,7 @@ userStr = simpledialog.askstring(
 )
 
 # Cleans the folder name
-cleanStr1 = userStr.replace(":", "-")
+cleanStr1 = userStr.replace(":", " -")
 cleanStr2 = cleanStr1.replace("/", "-")
 cleanStr3 = cleanStr2.replace(".", "-")
 cleanStr4 = cleanStr2.replace("|", "-")
