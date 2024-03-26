@@ -1,23 +1,20 @@
-""" import os and tk """
+"""Creates a new folder with the title provided
+by the user, and then creates three subfolders inside it"""
 import os
-from tkinter import simpledialog
-from tkinter.filedialog import askdirectory
-import tkinter.messagebox
 import tkinter as tk
+from tkinter import simpledialog, filedialog, messagebox
 
-# hide root window
+# Hide root window
 root = tk.Tk()
 root.withdraw()
 
 # Intro guide messagebox
-tkinter.messagebox.showinfo(
-    "info", "Selecione onde será salva a task, \n(Super ou Eletro)."
-)
+messagebox.showinfo("Info", "Selecione onde será salva a task, (Super ou Eletro).")
 
 # Shows dialog box and return the path
-path = askdirectory(
-    initialdir="/Volumes/Cadastra/CANTINI/Clientes/Angeloni", title="Pasta destino"
-)
+path = filedialog.askdirectory(
+    initialdir="/Volumes/Cadastra/CANTINI/Clientes/Angeloni",
+    title="Pasta destino")
 print(path)
 
 # Creates the folder
@@ -25,10 +22,8 @@ os.chdir(path)
 
 # Asks the folder name
 userStr = simpledialog.askstring(
-    "Criar pasta",
-    "Cole o título da task no Collab aqui. "
-    "(Ex.: #0000: Cliente | Criação | Campanha | Peças 00/00)",
-)
+    "Criar pasta", "Cole o título da task no Collab aqui.\n \
+        (Ex.: #0000: Cliente | Criação | Campanha | Peças 00/00)")
 
 # Cleans the folder name
 cleanStr1 = userStr.replace(":", " |")
@@ -41,8 +36,7 @@ try:
         os.makedirs(NewFolder)
 
     # Creates the subfolders
-    path2 = path + "//" + NewFolder
-    os.chdir(path2)
+    path2 = f"{path}\\{NewFolder}"
     NEWFOLDER_1 = "00_materiais"
     os.makedirs(NEWFOLDER_1)
     NEWFOLDER_2 = "01_layout"
@@ -51,12 +45,9 @@ try:
     os.makedirs(NEWFOLDER_3)
 
     # Success feedback
-    tkinter.messagebox.showinfo("info", "Sucesso Total!")
+    messagebox.showinfo("Info", "Sucesso Total!")
 
 # Error feedback
-except OSError:
-    tkinter.messagebox.showinfo(
-        "info",
-        "Erro: A pasta já existe! \
-		                         Verifique o nome da task.",
-    )
+except OSError as err:
+    messagebox.showinfo("Error", f"Error: {err}.\n\
+        Verify the name of the task.")
